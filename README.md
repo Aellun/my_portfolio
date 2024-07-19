@@ -9,7 +9,7 @@ Welcome to my portfolio! This repository showcases various projects and skills d
 ## Projects
 
 Here are some of the key projects included in this portfolio:  
-- **LearnHub**: A web-based application designed to facilitate self-development within organizations. Features include user authentication, dynamic content, and interactive quizzes. (Include additional projects here if applicable)
+- [**LearnHub**]:(learnhub-seven.vercel.app/) A web-based application designed to facilitate self-development within organizations. Features include user authentication, dynamic content, and interactive quizzes. 
 
 ## Technologies
 
