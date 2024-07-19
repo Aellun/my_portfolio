@@ -1,0 +1,78 @@
+<!-- {% extends 'basic.html' %} -->
+
+{% block title %} Projects {% endblock title %}
+
+{% block stylecss %}
+{% load static %}
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+  integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+<link href="{% static 'assets/css/project.css' %}" rel="stylesheet">
+{% endblock stylecss %}
+
+{% block body %}
+<h2>PROJECTS</h2>
+<div class="container-content">
+  <div class="section">
+    <article class="article-box">
+      <h3><a href="https://learnhub-seven.vercel.app/">LearnHub Quiz Application</a></h3>
+      <p class="resume-paragraph">
+        <strong>Description:</strong><br>
+        LearnHub is a transformative web-based application designed to 
+        address the crucial need for self-development tools and resources within an organization. 
+      </p>
+    </article>
+    
+    <article class="article-box">
+      <h3><a href="https://github.com/Aellun/Solid-Adventures/tree/main/task-manager_GUI">Task Manager</a></h3>
+      <p class="resume-paragraph">
+        <strong>Description:</strong><br>
+        Built with Python and Tkinter library and SQLite3<br>
+        This is an application that enables you to organize your to-do list for the specified period you decide.
+      </p>
+    </article>
+
+    <article class="article-box">
+      <h3><a href="https://github.com/Aellun/Solid-Adventures/tree/main/Password_generator">Password Generator</a></h3>
+      <p class="resume-paragraph">
+        <strong>Description:</strong><br>
+        Built with Python and Tkinter<br>
+        This is a desktop application you can use to generate, store, and manage secure random passwords.
+      </p>
+    </article>
+
+    <article class="article-box">
+      <h3><a href="https://github.com/Aellun/Solid-Adventures/tree/main/mycommand-console">Console</a></h3>
+      <p class="resume-paragraph">
+        <strong>Description:</strong><br>
+        Built with Python<br>
+        This is a console that mimics the functionality of a terminal on Linux or CMD on Windows. The commands for both Windows and Linux are fused together, meaning you don't have to be a Windows or Linux user to easily use it.
+      </p>
+    </article>
+
+    <article class="article-box">
+      <h3><a href="https://github.com/Aellun/Solid-Adventures/tree/main/calculator">Calculator</a></h3>
+      <p class="resume-paragraph">
+        <strong>Description:</strong><br>
+        Built with Python Tkinter Library<br>
+        This is just a simple calculator which the user can download and use on the desktop.
+      </p>
+    </article>
+
+    
+
+    <article class="article-box">
+      <h3><a href='https://github.com/Aellun/Solid-Adventures/tree/main/app_logging'>Logs</a></h3>
+      <p class="resume-paragraph">
+        <strong>Description:</strong><br>
+        Built with Python Tkinter library and SQLite3<br>
+        This is a graphical user interface for PC logs that stores all the application and service logs. As long as it is running on the host PC, it will store the logs. Users can review and analyze such logs easily by choosing the dates.
+      </p>
+    </article>
+  </div>
+</div>
+{% endblock body %}

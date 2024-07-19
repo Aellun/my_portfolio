@@ -1,0 +1,68 @@
+body {
+    width: 100%;
+    min-height: 100vh;
+    background: url("../img/resume1.d3ed01597f30.jpg") top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #fff;  /* Adjust text color for better readability */
+    font-family: Arial, sans-serif;  /* Adjust font family as needed */
+    margin: 0;
+    padding: 0;
+}
+
+.container-content {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    /* background: rgba(255, 255, 255, 0.8); */
+    color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.section {
+    width: 49%;
+    margin-bottom: 30px;
+    padding: 20px;
+    /* background: #f9f9f9; */
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section h2 {
+    margin-bottom: 10px;
+}
+
+.section h4 {
+    margin-bottom: 5px;
+    color: #444;
+}
+
+.section a {
+    color: #81D8D0;
+    text-decoration: underline;
+}
+
+.article-box {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+.resume-paragraph {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    list-style-type: disc; /* Bullet points style */
+    padding-left: 20px; /* Space between bullet and text */
+    font-style: italic;
+}
+
+.section ul {
+    padding-left: 20px; /* Ensure bullet points are indented */
+    list-style-type: disc; /* Use default bullet points */
+}

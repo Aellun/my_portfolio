@@ -1,0 +1,147 @@
+<!-- {% extends 'basic.html' %}  -->
+
+{% block title %} Resume {% endblock title %}
+
+{% block stylecss %}
+{% load static %}
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+  integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"/>
+  <link href="{% static 'assets/css/resume.css' %}" rel="stylesheet">
+{% endblock stylecss %}
+
+{% block body %}
+<h2>RESUME</h2>
+<div class="container-content">
+  <div class="section">
+    <h2>PROFESSIONAL EXPERIENCE</h2>
+
+    <article class="article-box">
+      <h6><strong>IT Support-Digitization</strong>:<a href="https://disigroup.com/about-us/">Digital Imaging and Scanning International</a></h6>
+      <h6><em>October 2022 - Present</em></h6>
+      <h6><em>Roles and Achievements:</em></h6>
+      <p class="resume-paragraph">
+        <ul>
+          <li><em>Evaluate, install, and configure computer hardware components <br> </em></li>
+          <li><em>Troubleshoot and resolve hardware issues <br></em></li>
+          <li><em>Network infrastructure setup and maintenance <br></em></li>
+          <li><em>Install and configure software applications and licenses <br></em></li>
+          <li><em>Databases Setup, configuration, and troubleshooting.</em></li>
+        </ul>
+      </p>
+    </article>
+
+    <article class="article-box">
+      <h6><strong>Assistant Project Team Leader</strong>:<a href="https://disigroup.com/about-us/">Digital Imaging and Scanning International</a></h6>
+      <h6><em>June 2021 - September 2022</em></h6>
+      <h6><em>Roles and Achievements:</em></h6>
+      <p class="resume-paragraph">
+        <ul>
+          <li><em>Managed and led a team of 10 supervisors and over 100 digitization clerks <br></em></li>
+          <li><em>Successfully manage and lead a digitization team by setting clear goals, assigning tasks, and providing constructive feedback, fostering a productive work environment <br></em></li>
+          <li><em>Develop and implement digitization processes and procedures that align with industry standards, ensuring compliance and optimizing efficiency <br></em></li>
+          <li><em>Coordinate seamlessly with IT and other teams to establish and maintain digital systems and tools, fostering a collaborative working environment <br></em></li>
+          <li><em>Oversee the entire digitization process, monitoring progress, resolving issues promptly, and communicating effectively with stakeholders to keep projects on track <br></em></li>
+          <li><em>Ensure the digitization team has the necessary resources and equipment, while also providing comprehensive training and support to enhance the team's skills and knowledge for optimal performance.</em></li>
+        </ul>
+      </p>
+    </article>
+
+    <article class="article-box">
+      <h6><strong>Digitization Supervisor</strong>:<a href="https://disigroup.com/about-us/">Digital Imaging and Scanning International</a></h6>
+      <h6><em>January 2020 - May 2021</em></h6>
+      <h6><em>Responsibilities and Achievements:</em></h6>
+      <p class="resume-paragraph">
+        <ul>
+          <li><em>Managed and led a team of 10 supervisors and over 100 digitization clerks <br></em></li>
+          <li><em>Oversaw preparation, scanning, quality control, indexing, and cataloging digital images <br></em></li>
+          <li><em>Monitored project progress, resolved issues, and communicated with Team Leader and stakeholders <br></em></li>
+          <li><em>Reviewed and analyzed data for quality and completeness. Implemented process improvements.</em></li>
+        </ul>
+      </p>
+    </article>
+
+    <article class="article-box">
+      <h6><strong>Attachee-IT Technician</strong>:<a href="https://kenya.ilu.edu/">International Leadership University</a></h6>
+      <h6><em>September 2018 - December 2018</em></h6>
+      <h6><em>Roles and Achievements:</em></h6>
+      <p class="resume-paragraph">
+        <ul>
+          <li><em>Installed, configured, and maintained computer hardware and software systems <br></em></li>
+          <li><em>Troubleshoot and resolve technical issues for users <br></em></li>
+          <li><em>Managed and maintained networks, servers, and other IT infrastructure <br></em></li>
+          <li><em>Provided training and support to users on new technology and software applications.</em></li>
+        </ul>
+      </p>
+    </article>
+  </div>
+
+  <div class="section">
+    <h2>Education</h2>
+
+    <article class="article-box">
+      <h6><strong>Full Stack Software Engineering</strong>:<a href="https://www.alxafrica.com/news/ali-acquires-holberton-school/">ALX Africa</a></h6>
+      <h6><em>May 2023 - Present</em></h6>
+      <h6><em>Covered:</em></h6>
+      <p class="resume-paragraph">
+        <strong>Programming Languages:</strong> <br>
+        <ul>
+          <li><em>C :(Pointers, Arrays, Strings, Structures, Dynamic Libraries, Recursion, etc.)<br></em></li>
+        </ul>
+        <ul>
+          <li><em>Python: (Fundamentals, Data Structures, Exceptions, Classes and Objects, Inheritance, Input/Output, and more)<br></em></li>
+        </ul>
+        <strong>Shell Scripting:</strong> <br>
+        <ul>
+          <li><em>Shell Basics, Permissions, I/O Redirections and Filters, Init Files, Variables, and Expansions<br></em></li>
+        </ul>
+      </p>
+    </article>
+
+    <article class="article-box">
+      <h6><strong>Bachelor of Technology (BIT)</strong>:<a href="https://www.tukenya.ac.ke/sites/default/files/downloads/TUK-list-of-gruaduands-2018.pdf">The Technical University of Kenya</a></h6>
+      <h6><em>August 2014 - December 2018</em></h6>
+      <h6><em>Second Class Lower Division</em></h6>
+      <h6><em>Covered:</em></h6>
+      <p class="resume-paragraph">
+        <ul>
+          <li><em>Analysis and design <br></em></li>
+          <li><em>Business process modeling and simulations <br></em></li>
+          <li><em>Business information systems <br></em></li>
+          <li><em>Information system audit <br></em></li>
+          <li><em>Information system security <br></em></li>
+          <li><em>IT project management <br></em></li>
+          <li><em>Database management systems.</em></li>
+        </ul>
+      </p>
+    </article>
+  </div>
+
+  <div class="section" style="width: 100%; margin-top: 30px;">
+    <h2>Certifications</h2>
+
+    <article class="article-box">
+      <h6>Electronic Document Management (ECM):<a href="https://hk.newgensoft.com/partners/#resellers">NewgenSoft</a></h6>
+      <h6><em>November 2022</em></h6>
+    </article>
+
+    <article class="article-box">
+      <h6>Leadership and Management:<a href="https://noblework.org/">Noblework Foundation</a></h6>
+      <h6><em>July 2021</em></h6>
+    </article>
+
+    <article class="article-box">
+      <h6>Fundamentals of Digital Marketing:<a href="https://skillshop.exceedlms.com/student/collection/648385-digital-marketing?locale=en">Google Digital Skills</a></h6>
+      <h6><em>July 2021</em></h6>
+    </article>
+
+    <article class="article-box">
+      <h6>Certificate In Information Technology:<a href="https://www.google.com/search?sca_esv=589766361&sxsrf=AM9HkKn0uTHQS4wbzQM7CT1ZHNrQ66tBfA:1702297227629&q=Cathedral+Church+Of+Christ+The+King&ludocid=1352565100568654148&lsig=AB86z5XAf6Dv27egK50bp54u2Y90&sa=X&ved=2ahUKEwia87esr4eDAxXBe6QEHXZvCWIQ8G0oAHoECEwQAQ&biw=1850&bih=944&dpr=1">Christ The King Training Institute Nakuru</a></h6>
+      <h6><em>July 2021</em></h6>
+    </article>
+  </div>
+</div>
+{% endblock body %}

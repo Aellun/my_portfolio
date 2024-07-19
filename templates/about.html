@@ -1,0 +1,112 @@
+{% extends 'basic.html' %}
+{% block title %} About {% endblock title %}
+{% block body %}
+{% load static %}
+<link href="{% static 'assets/css/about.css' %}" rel="stylesheet">
+<section id="about" class="about">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>About</h2>
+      <p style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 70vw; margin: 0 auto; padding: 20px; background-color: #f9f9f9; border-radius: 8px;">
+        I am Okello Kevin, an experienced IT professional with a robust background in web development, IT support, and project management.
+        <br><br>
+        My technical skill set spans a variety of programming languages, comprehensive web development expertise, and extensive database management experience. I have substantial experience in DevOps and am adept at managing both Linux and Windows operating systems.
+        <br><br>
+        In my IT support roles, particularly within document digitization and electronic document management companies, I have honed my skills in managing and configuring electronic document management applications (EDMS), utilizing OCR technology, and ensuring data security and compliance with regulations such as GDPR and HIPAA. My role often involves troubleshooting technical issues, providing exceptional system user support services, and implementing process improvements to enhance efficiency.
+    </p>
+    
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4" data-aos="fade-right">
+        <img src="{% static 'assets/img/Invited1.jpg' %}" class="img-fluid" alt="Profile Image">
+      </div>
+      <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
+        <h3>Technical Skills</h3>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Category</th>
+              <th scope="col">Skills</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Programming Languages</td>
+              <td>
+                <ul>
+                  <li>Python</li>
+                  <li>C</li>
+                  
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Web Development</td>
+              <td>
+                <ul>
+                  <li>HTML5/CSS</li>
+                  <li>React</li>
+                  <li>Node.js</li>
+                  <li>Express</li>
+                  <li>Javascript</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Database Management</td>
+              <td>
+                <ul>
+                  <li>MySQL</li>
+                  <li>MariaDB</li>
+                  <li>MongoDB</li>
+                  <li>Postgres</li>
+                  <li>SQLite</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Version Control</td>
+              <td>
+                <ul>
+                  <li>Git/GitHub</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Scripting and Automation</td>
+              <td>
+                <ul>
+                  <li>Bash/Shell</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>DevOps</td>
+              <td>
+                <ul>
+                  <li>Puppet configurations</li>
+                  <li>Server Setup and configurations</li>
+                  
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Operating systems</td>
+              <td>
+                <ul>
+                  <li>Linux</li>
+                  <li>Windows</li>
+                  
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</section><!-- End About Section -->
+{% endblock body %}
