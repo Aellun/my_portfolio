@@ -1,0 +1,86 @@
+#about .section-title h2 {
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: #777;
+}
+
+#about .section-title p {
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 30px;
+}
+
+#about .img-fluid {
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#about h3 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: black;
+}
+
+/* Table styles */
+#about table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+#about th, #about td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+#about th {
+    background-color: rgb(82, 80, 80);
+    color: white;
+    /* background-color: #f8f9fa; */
+    font-weight: bold;
+}
+
+#about tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+    font-weight: 900;
+    color: black;
+}
+
+#about tbody tr:nth-child(odd) {
+    background-color: #f8f9fa;
+    color: black;
+    font-weight: 900;
+}
+
+#about ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#about ul li {
+    margin-bottom: 5px;
+}
+
+#about ul li::before {
+    content: "\2022";
+    color: black;
+    font-weight: bold;
+    display: inline-block; 
+    width: 1em;
+    margin-left: -1em;
+}
+#about {
+    width: 100%;
+    min-height: 100vh;
+    background: url("../img/Invited2.061e1ae8f577.jpg") top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 60px 0;
+    color: black;  
+}

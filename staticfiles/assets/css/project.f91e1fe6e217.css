@@ -1,0 +1,61 @@
+body {
+    width: 100%;
+    min-height: 100vh;
+    background: url("../img/resume2.73b1d9e84474.jpg") top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container-content {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    color: #080808;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.section {
+    width: 100%;
+    margin-bottom: 30px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section h2 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.section h3 a {
+    color: #080f0f;
+    text-decoration: underline;
+}
+
+.article-box {
+    border: 1px solid #dddddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+.resume-paragraph {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    list-style-type: disc; /* Bullet points style */
+    padding-left: 20px; /* Space between bullet and text */
+    font-style: italic;
+}
+
+.section ul {
+    padding-left: 20px; /* Ensure bullet points are indented */
+    list-style-type: disc; /* Use default bullet points */
+}
