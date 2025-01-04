@@ -24,7 +24,7 @@ body {
 }
 
 .section {
-    width: 100%;  /* Full width for each section */
+    width: 49%;
     margin-bottom: 30px;
     padding: 20px;
     border-radius: 8px;
@@ -33,7 +33,16 @@ body {
 
 .section h2 {
     margin-bottom: 10px;
-    font-size: 24px;
+}
+
+.section h4 {
+    margin-bottom: 5px;
+    color: #444;
+}
+
+.section a {
+    color: #81D8D0;
+    text-decoration: underline;
 }
 
 .article-box {
@@ -46,37 +55,55 @@ body {
 .resume-paragraph {
     margin-bottom: 20px;
     line-height: 1.6;
-    list-style-type: disc; /* Bullet points style */
-    padding-left: 20px; /* Space between bullet and text */
+    list-style-type: disc;
+    padding-left: 20px;
     font-style: italic;
 }
 
 .section ul {
-    padding-left: 20px; /* Ensure bullet points are indented */
-    list-style-type: disc; /* Default bullet points */
+    padding-left: 20px;
+    list-style-type: disc;
 }
 
-h6 {
-    margin: 5px 0;
-    font-size: 16px;
-    font-weight: normal;
-}
+/* Media Queries for Mobile Screens */
+@media screen and (max-width: 768px) {
+    .container-content {
+        width: 100%;
+        padding: 10px;
+    }
 
-h6 strong {
-    font-weight: bold;
-}
-
-h6 em {
-    font-style: italic;
-}
-
-a {
-    color: #81D8D0;
-    text-decoration: underline;
-}
-
-@media (min-width: 768px) {
     .section {
-        width: 48%;  /* Two sections per row on larger screens */
+        width: 100%; /* Stack the sections vertically on smaller screens */
+        margin-bottom: 20px;
+    }
+
+    .article-box {
+        padding: 10px; 
+    }
+
+    .section h2 {
+        font-size: 1.5rem; 
+    }
+
+    .resume-paragraph {
+        font-size: 0.9rem;
+    }
+
+    .section a {
+        font-size: 0.9rem; 
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .section h2 {
+        font-size: 1.2rem; 
+    }
+
+    .resume-paragraph {
+        font-size: 0.85rem; 
+    }
+
+    .section a {
+        font-size: 0.85rem; 
     }
 }
