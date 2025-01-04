@@ -24,7 +24,7 @@ body {
 }
 
 .section {
-    width: 49%;
+    width: 49% !important; /* Add !important to override base template styles */
     margin-bottom: 30px;
     padding: 20px;
     border-radius: 8px;
@@ -68,42 +68,42 @@ body {
 /* Media Queries for Mobile Screens */
 @media screen and (max-width: 768px) {
     .container-content {
-        width: 100%;
+        width: 100% !important;
         padding: 10px;
     }
 
     .section {
-        width: 100%; /* Stack the sections vertically on smaller screens */
+        width: 100% !important; /* Force section to be full-width on smaller screens */
         margin-bottom: 20px;
     }
 
     .article-box {
-        padding: 10px; 
+        padding: 10px !important; /* Reduce padding inside article boxes */
     }
 
     .section h2 {
-        font-size: 1.5rem; 
+        font-size: 1.5rem !important; /* Reduce font size for headings */
     }
 
     .resume-paragraph {
-        font-size: 0.9rem;
+        font-size: 0.9rem !important; /* Reduce font size for paragraphs */
     }
 
     .section a {
-        font-size: 0.9rem; 
+        font-size: 0.9rem !important; /* Adjust link size */
     }
 }
 
 @media screen and (max-width: 480px) {
     .section h2 {
-        font-size: 1.2rem; 
+        font-size: 1.2rem !important; /* Even smaller heading size on very small screens */
     }
 
     .resume-paragraph {
-        font-size: 0.85rem; 
+        font-size: 0.85rem !important; /* Even smaller text for very small screens */
     }
 
     .section a {
-        font-size: 0.85rem; 
+        font-size: 0.85rem !important; /* Adjust link size for very small screens */
     }
 }
