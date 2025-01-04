@@ -23,7 +23,8 @@ body {
     justify-content: space-between;
 }
 
-.section {
+/* Add a new class for responsive sections */
+.responsive-columns .section {
     width: 49%; /* Default to two columns on larger screens */
     margin-bottom: 30px;
     padding: 20px;
@@ -31,79 +32,39 @@ body {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.section h2 {
+.responsive-columns .section h2 {
     margin-bottom: 10px;
 }
 
-.section h4 {
-    margin-bottom: 5px;
-    color: #444;
-}
-
-.section a {
+.responsive-columns .section a {
     color: #81D8D0;
     text-decoration: underline;
 }
 
-.article-box {
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-}
-
-.resume-paragraph {
-    margin-bottom: 20px;
-    line-height: 1.6;
-    list-style-type: disc;
-    padding-left: 20px;
-    font-style: italic;
-}
-
-.section ul {
+.responsive-columns .section ul {
     padding-left: 20px;
     list-style-type: disc;
 }
 
 /* Mobile-first styling */
 @media screen and (max-width: 768px) {
-    .container-content {
+    .responsive-columns {
         width: 100%;
         padding: 10px;
     }
 
-    .section {
+    .responsive-columns .section {
         width: 100% !important; /* Force full-width for sections on mobile */
         margin-bottom: 20px;
-    }
-
-    .article-box {
-        padding: 10px;
-    }
-
-    .section h2 {
-        font-size: 1.5rem;
-    }
-
-    .resume-paragraph {
-        font-size: 0.9rem;
-    }
-
-    .section a {
-        font-size: 0.9rem;
     }
 }
 
 @media screen and (max-width: 480px) {
-    .section h2 {
+    .responsive-columns .section h2 {
         font-size: 1.2rem;
     }
 
-    .resume-paragraph {
-        font-size: 0.85rem;
-    }
-
-    .section a {
+    .responsive-columns .section ul {
         font-size: 0.85rem;
     }
 }
