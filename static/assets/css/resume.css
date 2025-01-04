@@ -24,7 +24,7 @@ body {
 }
 
 .section {
-    width: 49% !important; /* Add !important to override base template styles */
+    width: 49%; /* Default to two columns on larger screens */
     margin-bottom: 30px;
     padding: 20px;
     border-radius: 8px;
@@ -65,45 +65,45 @@ body {
     list-style-type: disc;
 }
 
-/* Media Queries for Mobile Screens */
+/* Mobile-first styling */
 @media screen and (max-width: 768px) {
     .container-content {
-        width: 100% !important;
+        width: 100%;
         padding: 10px;
     }
 
     .section {
-        width: 100% !important; /* Force section to be full-width on smaller screens */
+        width: 100% !important; /* Force full-width for sections on mobile */
         margin-bottom: 20px;
     }
 
     .article-box {
-        padding: 10px !important; /* Reduce padding inside article boxes */
+        padding: 10px;
     }
 
     .section h2 {
-        font-size: 1.5rem !important; /* Reduce font size for headings */
+        font-size: 1.5rem;
     }
 
     .resume-paragraph {
-        font-size: 0.9rem !important; /* Reduce font size for paragraphs */
+        font-size: 0.9rem;
     }
 
     .section a {
-        font-size: 0.9rem !important; /* Adjust link size */
+        font-size: 0.9rem;
     }
 }
 
 @media screen and (max-width: 480px) {
     .section h2 {
-        font-size: 1.2rem !important; /* Even smaller heading size on very small screens */
+        font-size: 1.2rem;
     }
 
     .resume-paragraph {
-        font-size: 0.85rem !important; /* Even smaller text for very small screens */
+        font-size: 0.85rem;
     }
 
     .section a {
-        font-size: 0.85rem !important; /* Adjust link size for very small screens */
+        font-size: 0.85rem;
     }
 }
