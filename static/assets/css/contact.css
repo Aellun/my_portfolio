@@ -12,60 +12,65 @@ body {
 }
 
 .container {
-    max-width: 1000px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background: transparent;
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparent background for better readability */
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 h3.text-white.bg-dark {
-    /* background-color: #333; */
     color: #fff;
-    padding: 10px;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: #333;
     border-radius: 8px 8px 0 0;
 }
 
 .card {
     padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent for better contrast */
     border: none;
-    border-radius: 0 0 8px 8px;
-}
-
-.form-group h5 {
-    margin-bottom: 10px;
-    color: #333;
-}
-
-.form-control {
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 10px;
-    margin-bottom: 10px;
-}
-
-.btn-dark {
-    background-color: #333;
-    border: none;
+    border-radius: 8px;
     color: #fff;
-    padding: 10px;
-    border-radius: 4px;
-    cursor: pointer;
 }
 
-.btn-dark:hover {
-    background-color: #555;
-}
-
-.alert {
-    margin-top: 20px;
-}
-
-.alert-dismissible .btn-close {
-    background: none;
-    border: none;
-    color: inherit;
-    cursor: pointer;
+ul.list-unstyled {
     padding: 0;
+    margin: 0;
+    list-style-type: none;
 }
+
+ul.list-unstyled li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+ul.list-unstyled li span {
+    font-size: 1.3rem;
+    margin-right: 10px;
+    color: #FFD700; /* Gold color for icons */
+}
+
+ul.list-unstyled li a {
+    color: #00BFFF; /* Light blue for links */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+ul.list-unstyled li a:hover {
+    color: #1E90FF; /* Darker blue for hover state */
+}
+
+ul.list-unstyled li strong {
+    margin-right: 5px;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* Button styles removed since form elements were eliminated */
