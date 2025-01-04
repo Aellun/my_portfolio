@@ -3,108 +3,87 @@
 {% block body %}
 {% load static %}
 <link href="{% static 'assets/css/about.css' %}" rel="stylesheet">
+
 <section id="about" class="about">
   <div class="container">
-
-    <div class="section-title">
+    <div class="section-title" data-aos="fade-in">
       <h2>About</h2>
-      <p style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 70vw; margin: 0 auto; padding: 20px; background-color: #f9f9f9; border-radius: 8px;">
-          I am Okello Kevin, a Driven Full-Stack Development student with comprehensive skills in Python, C, and database management. Proficient in scripting, automation, and troubleshooting, with a proven track record in hardware and network optimization, software management, and user training. Demonstrated leadership in digitization projects, successfully managing teams and streamlining processes to enhance efficiency. Eager to leverage strong technical and customer service skills to develop innovative, user-friendly applications that drive organizational growth and efficiency.
-          <br><br>
-          In my IT support roles, particularly within document digitization and electronic document management companies, I have honed my skills in managing and configuring electronic document management applications (EDMS), utilizing OCR technology, and ensuring data security and compliance with regulations such as GDPR and HIPAA. My role often involves troubleshooting technical issues, providing exceptional system user support services, and implementing process improvements to enhance efficiency.
+      <p class="about-summary">
+        I am Okello Kevin, a proactive Technical Operation Engineer with over 4 years of experience in IT support, automation, and network troubleshooting. Skilled in scripting, process automation, and database management, I specialize in optimizing performance and developing innovative solutions. With a proven track record of leading digitization projects and providing exceptional user support, I am passionate about creating scalable, user-friendly systems that enhance efficiency and drive transformation.
       </p>
-  </div>
-  
+    </div>
 
     <div class="row">
       <div class="col-lg-4" data-aos="fade-right">
-        <img src="{% static 'assets/img/Invited1.jpg' %}" class="img-fluid" alt="Profile Image">
+        <img src="{% static 'assets/img/logo.png' %}" class="img-fluid" alt="Profile Image">
       </div>
       <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
         <h3>Technical Skills</h3>
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th scope="col">Category</th>
-              <th scope="col">Skills</th>
-            </tr>
-          </thead>
+        <table class="table table-striped">
           <tbody>
             <tr>
-              <td>Programming Languages</td>
-              <td>
-                <ul>
-                  <li>Python</li>
-                  <li>C</li>
-                  
-                </ul>
-              </td>
+              <th>Programming Languages</th>
+              <td>Python, Bash/Shell, C, JavaScript</td>
             </tr>
             <tr>
-              <td>Web Development</td>
-              <td>
-                <ul>
-                  <li>HTML5/CSS</li>
-                  <li>React</li>
-                  <li>Node.js</li>
-                  <li>Express</li>
-                  <li>Javascript</li>
-                </ul>
-              </td>
+              <th>Web Development</th>
+              <td>HTML/CSS, React, Node.js, Express</td>
             </tr>
             <tr>
-              <td>Database Management</td>
-              <td>
-                <ul>
-                  <li>MySQL</li>
-                  <li>MariaDB</li>
-                  <li>MongoDB</li>
-                  <li>Postgres</li>
-                  <li>SQLite</li>
-                </ul>
-              </td>
+              <th>Database Management</th>
+              <td>MySQL, MongoDB, PostgreSQL, SQLite,InfluxDb</td>
             </tr>
             <tr>
-              <td>Version Control</td>
-              <td>
-                <ul>
-                  <li>Git/GitHub</li>
-                </ul>
-              </td>
+              <th>Networking</th>
+              <td>DHCP, DNS, TCP/IP, RADIUS, GPON, Datacom, Wi-Fi Security,SNMP</td>
             </tr>
             <tr>
-              <td>Scripting and Automation</td>
-              <td>
-                <ul>
-                  <li>Bash/Shell</li>
-                </ul>
-              </td>
+              <th>Scripting & Automation</th>
+              <td>Python, Bash, Business Process Automation</td>
             </tr>
             <tr>
-              <td>DevOps</td>
-              <td>
-                <ul>
-                  <li>Puppet configurations</li>
-                  <li>Server Setup and configurations</li>
-                  
-                </ul>
-              </td>
+              <th>Tools</th>
+              <td>Wireshark, Prometheus,Grafana,Elasticsearch, Git/GitHub</td>
             </tr>
             <tr>
-              <td>Operating systems</td>
-              <td>
-                <ul>
-                  <li>Linux</li>
-                  <li>Windows</li>
-                  
-                </ul>
-              </td>
+              <th>Operating Systems</th>
+              <td>Linux, Windows</td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
-
   </div>
-</section><!-- End About Section -->
+</section>
+
+<style>
+.about-summary {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: justify;
+}
+
+.table {
+  font-size: 0.95rem;
+}
+
+.table th {
+  width: 30%;
+  font-weight: bold;
+}
+
+.section-title h2 {
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.section-title {
+  max-width: 70%;
+  margin: 0 auto;
+}
+</style>
 {% endblock body %}
