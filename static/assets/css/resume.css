@@ -15,7 +15,6 @@ body {
     width: 90%;
     margin: 0 auto;
     padding: 20px;
-    /* background: rgba(255, 255, 255, 0.8); */
     color: #0a0a0a;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -25,26 +24,16 @@ body {
 }
 
 .section {
-    width: 49%;
+    width: 100%;  /* Full width for each section */
     margin-bottom: 30px;
     padding: 20px;
-    /* background: #f9f9f9; */
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .section h2 {
     margin-bottom: 10px;
-}
-
-.section h4 {
-    margin-bottom: 5px;
-    color: #444;
-}
-
-.section a {
-    color: #81D8D0;
-    text-decoration: underline;
+    font-size: 24px;
 }
 
 .article-box {
@@ -64,5 +53,30 @@ body {
 
 .section ul {
     padding-left: 20px; /* Ensure bullet points are indented */
-    list-style-type: disc; /* Use default bullet points */
+    list-style-type: disc; /* Default bullet points */
+}
+
+h6 {
+    margin: 5px 0;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+h6 strong {
+    font-weight: bold;
+}
+
+h6 em {
+    font-style: italic;
+}
+
+a {
+    color: #81D8D0;
+    text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+    .section {
+        width: 48%;  /* Two sections per row on larger screens */
+    }
 }
