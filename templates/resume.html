@@ -1,99 +1,572 @@
-{% extends 'basic.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Resume - Okello Kevin Otieno</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/docx/7.1.0/docx.js"></script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #0f172a;
+            --accent: #06b6d4;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+            --success: #10b981;
+            --card-bg: rgba(255, 255, 255, 0.1);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
 
-{% block title %}Resume{% endblock title %}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-{% block stylecss %}
-{% load static %}
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-  integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-/>
-<link href="{% static 'assets/css/resume.css' %}" rel="stylesheet">
-{% endblock stylecss %}
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
 
-{% block body %}
-<section id="resume">
-  <div class="container-content responsive-columns">
-    <!-- Professional Experience -->
-    <div class="section">
-      <h2>Experience</h2>
-      <article>
-        <h6><strong>IT Support-Digitization</strong>: <a href="https://disigroup.com/about-us/">Digital Imaging and Scanning International</a></h6>
-        <h6><em>October 2022 - October 2024</em></h6>
-        <ul>
-          <li>Installed, configured hardware, and managed network infrastructure</li>
-          <li>Troubleshot and maintained software, databases, and systems</li>
-        </ul>
-      </article>
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.1) 0%, transparent 20%);
+            z-index: -1;
+        }
 
-      <article>
-        <h6><strong>Assistant Project Team Leader</strong>: <a href="https://disigroup.com/about-us/">Digital Imaging and Scanning International</a></h6>
-        <h6><em>June 2021 - Sept 2022</em></h6>
-        <ul>
-          <li>Led a team of 10 supervisors, managed digitization workflows</li>
-          <li>Developed and streamlined digital processes, provided IT support</li>
-        </ul>
-      </article>
+        .resume-container {
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+            max-width: 900px;
+            width: 100%;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
 
-      <article>
-        <h6><strong>Digitization Supervisor</strong>: <a href="https://disigroup.com/about-us/">Digital Imaging and Scanning International</a></h6>
-        <h6><em>Jan 2020 - May 2021</em></h6>
-        <ul>
-          <li>Monitored digitization processes, ensured quality control</li>
-          <li>Implemented process improvements for team efficiency</li>
-        </ul>
-      </article>
+        .resume-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+        }
 
-      <article>
-        <h6><strong>IT Technician Intern</strong>: <a href="https://kenya.ilu.edu/">International Leadership University</a></h6>
-        <h6><em>Sept 2018 - Dec 2018</em></h6>
-        <ul>
-          <li>Maintained IT systems, networks, and provided user support</li>
-        </ul>
-      </article>
+        .resume-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .resume-header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            background: linear-gradient(to right, var(--light), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .resume-header .contact-info {
+            color: var(--gray);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .resume-header .tagline {
+            color: var(--accent);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .resume-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .resume-section h2 {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid rgba(6, 182, 212, 0.3);
+        }
+
+        .resume-content {
+            color: var(--light);
+            line-height: 1.8;
+        }
+
+        .resume-content p {
+            margin-bottom: 1rem;
+        }
+
+        .resume-content ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .resume-content li {
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+
+        .resume-content li::before {
+            content: "●";
+            color: var(--accent);
+            position: absolute;
+            left: -1.5rem;
+        }
+
+        .resume-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .resume-item-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .resume-item-title {
+            font-weight: 600;
+            color: var(--light);
+        }
+
+        .resume-item-company {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .resume-item-date {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-category {
+            background: rgba(6, 182, 212, 0.1);
+            border-radius: 10px;
+            padding: 1.2rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1.1rem;
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+        }
+
+        .skill-category ul {
+            padding-left: 1.2rem;
+        }
+
+        .download-options {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.5);
+        }
+
+        .download-btn i {
+            font-size: 1.3rem;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            margin-top: 2rem;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .back-btn:hover {
+            gap: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .resume-container {
+                padding: 2rem 1.5rem;
+            }
+            
+            .resume-header h1 {
+                font-size: 2rem;
+            }
+            
+            .download-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .download-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <div class="resume-header">
+            <h1>Okello Kevin Otieno</h1>
+            <div class="contact-info">
+                Nairobi, Kenya | +254728519741 | okevinotieno@outlook.com
+            </div>
+            <div class="tagline">
+                Network Operations Engineer & Data Pipeline Specialist
+            </div>
+        </div>
+
+        <div class="resume-section">
+            <h2>Summary</h2>
+            <div class="resume-content">
+                <ul>
+                    <li>Results-driven IT specialist with 4+ years of experience in technical support, network operations, and automation, optimizing workflows and system efficiency</li>
+                    <li>Expert in Python, network security, and cloud technologies, with a proven track record of driving 30% efficiency gains through automation and managing 200+ software installations</li>
+                    <li>Built and maintained end-to-end data pipelines, integrating REST API data sources with Apache Kafka and Kafka Connect, processing and storing in Elasticsearch, and visualizing metrics through Grafana</li>
+                    <li>Currently advancing skills in Data Science, AI Engineering, Network Engineering, and Cybersecurity to bridge the gap between technology, business intelligence, and strategic decision-making</li>
+                    <li>Passionate about leveraging AI, automation, and data-driven insights to enhance IT operations, cybersecurity, and business growth</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="resume-section">
+            <h2>Work Experience</h2>
+            <div class="resume-content">
+                <div class="resume-item">
+                    <div class="resume-item-header">
+                        <div>
+                            <div class="resume-item-title">Network Operations Engineer</div>
+                            <div class="resume-item-company">Ahadi Corporation - Nairobi, Kenya</div>
+                        </div>
+                        <div class="resume-item-date">October 2024 - Present</div>
+                    </div>
+                    <ul>
+                        <li>Ensure high network availability by monitoring performance, troubleshooting issues, and resolving incidents to minimize downtime and security breaches</li>
+                        <li>Perform network maintenance, optimize configurations, and work with cross-functional teams to enhance efficiency, security, and overall business success</li>
+                        <li>Built and optimized a real-time data pipeline to monitor SMS usage from Celcom via REST API, streaming data through Kafka and Kafka Connect into Elasticsearch with Grafana dashboards for alerting and visibility</li>
+                    </ul>
+                </div>
+
+                <div class="resume-item">
+                    <div class="resume-item-header">
+                        <div>
+                            <div class="resume-item-title">IT Support Specialist</div>
+                            <div class="resume-item-company">Digital Imaging and Scanning International - Nairobi, Kenya</div>
+                        </div>
+                        <div class="resume-item-date">October 2022 - September 2024</div>
+                    </div>
+                    <ul>
+                        <li>Utilized tools like Prometheus to monitor performance, resolved connectivity issues, and optimized router, switch, and firewall configurations</li>
+                        <li>Improved efficiency through Python scripting (30% gain), provided technical support to teams, and trained end-users on IT best practices</li>
+                    </ul>
+                </div>
+
+                <div class="resume-item">
+                    <div class="resume-item-header">
+                        <div>
+                            <div class="resume-item-title">Assistant Project Team Leader</div>
+                            <div class="resume-item-company">Digital Imaging and Scanning International - Nairobi, Kenya</div>
+                        </div>
+                        <div class="resume-item-date">June 2021 - September 2022</div>
+                    </div>
+                    <ul>
+                        <li>Led a team of over 100 digitization clerks, improving processes through automation and data analysis</li>
+                        <li>Analyzed data trends and resolved project issues, communicating with stakeholders for smooth project delivery</li>
+                        <li>Developed and maintained comprehensive project documentation and knowledge bases</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="resume-section">
+            <h2>Education</h2>
+            <div class="resume-content">
+                <div class="resume-item">
+                    <div class="resume-item-header">
+                        <div>
+                            <div class="resume-item-title">Data Science</div>
+                            <div class="resume-item-company">ALX- Africa - Nairobi, Kenya</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="resume-item">
+                    <div class="resume-item-header">
+                        <div>
+                            <div class="resume-item-title">Software Engineering, Fullstack</div>
+                            <div class="resume-item-company">ALX- Africa - Nairobi, Kenya</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="resume-item">
+                    <div class="resume-item-header">
+                        <div>
+                            <div class="resume-item-title">Bachelor of Technology, Business Information Technology</div>
+                            <div class="resume-item-company">The Technical University of Kenya - Nairobi, Kenya</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="resume-item">
+                    <div class="resume-item-header">
+                        <div>
+                            <div class="resume-item-title">Certificate in Information Technology (Distinction)</div>
+                            <div class="resume-item-company">Christ The King Training Institute - Nakuru, Kenya</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="resume-section">
+            <h2>Skills & Expertise</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Networking & Security</h3>
+                    <ul>
+                        <li>DHCP, DNS, TCP/IP, RADIUS, GPON</li>
+                        <li>Wi-Fi security and troubleshooting</li>
+                        <li>Wireshark, Traceroute</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Programming & Automation</h3>
+                    <ul>
+                        <li>Python, Bash, C, JavaScript</li>
+                        <li>Business process automation</li>
+                        <li>Scripting and task automation</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Systems & Data Management</h3>
+                    <ul>
+                        <li>Linux, Windows administration</li>
+                        <li>VMware, KVM virtualization</li>
+                        <li>MySQL, MongoDB, PostgreSQL</li>
+                        <li>Prometheus, Grafana monitoring</li>
+                        <li>Docker containerization</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Data Engineering</h3>
+                    <ul>
+                        <li>Real-time data pipelines</li>
+                        <li>Kafka, Kafka Connect</li>
+                        <li>REST API integration</li>
+                        <li>Elasticsearch</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="resume-section">
+            <h2>Languages</h2>
+            <div class="resume-content">
+                <p>Kiswahili (Native), English (Expert), Dholuo (Native)</p>
+            </div>
+        </div>
+
+        <div class="download-options">
+            <button class="download-btn" id="download-pdf">
+                <i class="fas fa-file-pdf"></i> Download as PDF
+            </button>
+            <button class="download-btn" id="download-docx">
+                <i class="fas fa-file-word"></i> Download as DOCX
+            </button>
+            <button class="download-btn" id="download-txt">
+                <i class="fas fa-file-alt"></i> Download as TXT
+            </button>
+        </div>
     </div>
 
-    <!-- Education -->
-    <div class="section">
-      <h2>Education</h2>
-      <article>
-        <h6><strong>Full Stack Software Engineering</strong>: <a href="https://www.alxafrica.com/news/ali-acquires-holberton-school/">ALX Africa</a></h6>
-        <h6><em>May 2023 - November 2024</em></h6>
-        <ul>
-          <li>Learned C, Python, Shell Scripting, Data Structures</li>
-        </ul>
-      </article>
+    <a href="index.html" class="back-btn">
+        <i class="fas fa-arrow-left"></i> Back to Portfolio
+    </a>
 
-      <article>
-        <h6><strong>Bachelor of Technology (BIT)</strong>: <a href="https://www.tukenya.ac.ke/sites/default/files/downloads/TUK-list-of-gruaduands-2018.pdf">The Technical University of Kenya</a></h6>
-        <h6><em>Aug 2014 - Dec 2018</em></h6>
-        <ul>
-          <li>Focus on IT Project Management, Databases, and System Security</li>
-        </ul>
-      </article>
-    </div>
+    <script>
+        // Resume data in multiple formats
+        const resumeData = {
+            pdf: "resume.pdf",
+            docx: "resume.docx",
+            txt: "resume.txt"
+        };
 
-    <!-- Certifications -->
-    <div class="section">
-      <h2>Certifications</h2>
-      <article>
-        <h6>Electronic Document Management (ECM): <a href="https://hk.newgensoft.com/partners/#resellers">NewgenSoft</a></h6>
-        <h6><em>Nov 2022</em></h6>
-      </article>
+        // PDF generation function
+        function generatePDF() {
+            // In a real implementation, this would generate a PDF from the content
+            // For now, we'll simulate the download
+            alert("PDF generation complete! Your resume is downloading...");
+            simulateDownload("Okello_Kevin_Otieno_Resume.pdf");
+        }
 
-      <article>
-        <h6>Leadership and Management: <a href="https://noblework.org/">Noblework Foundation</a></h6>
-        <h6><em>July 2021</em></h6>
-      </article>
+        // DOCX generation function
+        function generateDOCX() {
+            // In a real implementation, this would generate a DOCX file
+            alert("DOCX generation complete! Your resume is downloading...");
+            simulateDownload("Okello_Kevin_Otieno_Resume.docx");
+        }
 
-      <article>
-        <h6>Certificate In Information Technology: <a href="https://www.google.com/search?sca_esv=589766361&sxsrf=AM9HkKn0uTHQS4wbzQM7CT1ZHNrQ66tBfA:1702297227629&q=Cathedral+Church+Of+Christ+The+King&ludocid=1352565100568654148&lsig=AB86z5XAf6Dv27egK50bp54u2Y90&sa=X&ved=2ahUKEwia87esr4eDAxXBe6QEHXZvCWIQ8G0oAHoECEwQAQ&biw=1850&bih=944&dpr=1">Christ The King Training Institute Nakuru</a></h6>
-        <h6><em>July 2021</em></h6>
-      </article>
-    </div>
-  </div>
-</section>
-{% endblock body %}
+        // TXT generation function
+        function generateTXT() {
+            // Create the text content
+            const textContent = `
+OKELLO KEVIN OTIENO
+Nairobi, Kenya | +254728519741 
+okevinotieno@outlook.com | LinkedIn | Portfolio 
+
+SUMMARY
+● Results-driven IT specialist with 4+ years of experience in technical support, network operations, and automation, optimizing workflows and system efficiency 
+● Expert in Python, network security, and cloud technologies, with a proven track record of driving 30% efficiency gains through automation and managing 200+ software installations.
+● Built and maintained end-to-end data pipelines, integrating REST API data sources with Apache Kafka and Kafka Connect, processing and storing in Elasticsearch, and visualizing metrics through Grafana 
+● Currently advancing skills in Data Science, AI Engineering, Network Engineering, and Cybersecurity to bridge the gap between technology, business intelligence, and strategic decision-making. 
+● Passionate about leveraging AI, automation, and data-driven insights to enhance IT operations, cybersecurity, and business growth. 
+
+EDUCATION
+ALX- Africa – Nairobi, Kenya                                                                                       
+Data Science 
+
+ALX- Africa – Nairobi, Kenya                                                                                        
+Software Engineering, Fullstack 
+
+The Technical University of Kenya – Nairobi, Kenya                                                
+Bachelor of Technology, Business Information Technology 
+
+Christ The King Training Institute – Nakuru , Kenya                                                
+Certificate in Information Technology (Distinction) 
+
+WORK EXPERIENCE
+Network Operations Engineer                                                                               
+Ahadi Corporation – Nairobi, Kenya  
+October 2024 – Present 
+● Network Monitoring & Incident Management: Ensure high network availability by monitoring performance, troubleshooting issues, and resolving incidents to minimize downtime and security breaches. 
+● Optimization & Collaboration: Perform network maintenance, optimize configurations, and work with cross-functional teams to enhance efficiency, security, and overall business success. 
+● Built and optimized a real-time data pipeline to monitor SMS usage from Celcom via REST API, streaming data through Kafka and Kafka Connect into Elasticsearch with Grafana dashboards for alerting and visibility. 
+
+IT Support Specialist 
+Digital Imaging and Scanning International – Nairobi, Kenya  
+October 2022 - September 2024 
+● Network Monitoring & Troubleshooting: Utilized tools like Prometheus to monitor performance, resolved connectivity issues, and optimized router, switch, and firewall configurations. 
+● Automation & Technical Support: Improved efficiency through Python scripting (30% gain), provided technical support to teams, and trained end-users on IT best practices. 
+
+Assistant Project Team Leader 
+Digital Imaging and Scanning International –Nairobi, Kenya   
+June 2021 – September 2022 
+● Led a team of over 100 digitization clerks, improving processes through automation and data analysis. 
+● Analyzed data trends and resolved project issues, communicating with stakeholders for smooth project delivery. 
+● Developed and maintained comprehensive project documentation and knowledge bases. 
+
+SKILLS
+● Networking & Security: Proficient in DHCP, DNS, TCP/IP, RADIUS, GPON, Wi-Fi security, and troubleshooting with tools like Wireshark and Traceroute  
+● Programming & Automation: Skilled in Python, Bash, C, and JavaScript, with expertise in business process automation and scripting. 
+● Systems & Data Management: Experienced in Linux, Windows, virtualization (VMware, KVM), databases (MySQL, MongoDB, PostgreSQL), monitoring (Prometheus, Grafana), and containerization (Docker). 
+
+INTERESTS
+● Data-Engineering: Experience in building and configuring real-time data pipelines using Kafka, Kafka Connect, REST APIs, and Elasticsearch, with monitoring via Grafana 
+● Nature & Wildlife Conservation 
+● HealthCare 
+● Regional Development 
+
+LANGUAGES
+● Kiswahili - Native 
+● English - Expert 
+● Dholuo - Native
+            `;
+
+            // Create a Blob with the text content
+            const blob = new Blob([textContent], { type: 'text/plain' });
+            
+            // Create a download link
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'Okello_Kevin_Otieno_Resume.txt';
+            
+            // Trigger the download
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Simulate download function
+        function simulateDownload(filename) {
+            const link = document.createElement('a');
+            link.href = '#'; // In a real implementation, this would be the file URL
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Event listeners
+        document.getElementById('download-pdf').addEventListener('click', generatePDF);
+        document.getElementById('download-docx').addEventListener('click', generateDOCX);
+        document.getElementById('download-txt').addEventListener('click', generateTXT);
+    </script>
+</body>
+</html>
